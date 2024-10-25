@@ -47,7 +47,7 @@ export class BookingManager {
 
       return booking
     } catch (error) {
-      this.#handleError(error, 'Error adding booking');
+      this.#handleError(error, 'Error adding booking')
 
       return {}
     }
@@ -74,8 +74,7 @@ export class BookingManager {
 
       console.log(`Booking with id ${bookingId} has been successfully removed.`)
     } catch (error) {
-      this.#handleError(error, 'Error cancelling booking');
-
+      this.#handleError(error, 'Error cancelling booking')
     }
   }
 
@@ -97,8 +96,7 @@ export class BookingManager {
 
       return booking
     } catch (error) {
-      this.#handleError(error, 'Error getting booking');
-
+      this.#handleError(error, 'Error getting booking')
     }
   }
 
@@ -112,7 +110,7 @@ export class BookingManager {
 
       return newProduct
     } catch (error) {
-      this.#handleError(error, 'Error adding prodcut');
+      this.#handleError(error, 'Error adding prodcut')
 
       return {}
     }
@@ -130,7 +128,7 @@ export class BookingManager {
 
       return true
     } catch (error) {
-      this.#handleError(error, 'Error removie product');
+      this.#handleError(error, 'Error removie product')
 
       return false
     }
@@ -140,7 +138,7 @@ export class BookingManager {
     try {
       return this.products
     } catch (error) {
-      this.#handleError(error, 'Error getting products');
+      this.#handleError(error, 'Error getting products')
     }
   }
 
@@ -153,18 +151,19 @@ export class BookingManager {
 
       return newCustomer
     } catch (error) {
-      this.#handleError(error, 'Error adding customer');
-
+      this.#handleError(error, 'Error adding customer')
     }
   }
 
   #createNewCustomer(customer) {
     const newCustomer = new Customer(customer.name, customer.email)
+
     return newCustomer
   }
 
   #createNewProduct(product) {
     const newProduct = new Product(product.name, product.description, product.price)
+
     return newProduct
   }
 
@@ -173,6 +172,7 @@ export class BookingManager {
       throw new Error('Product not found')
     }
   }
+
   #validateProductData(product) {
     if (!product.name || !product.description || !product.price) {
       throw new Error('Invalid product data. Name, description, and price are required.')
@@ -181,12 +181,12 @@ export class BookingManager {
 
   #validateCustomerData(customer) {
     if (!customer.name || !customer.email) {
-      throw new Error('Invalid customer data. Name and email are required.');
+      throw new Error('Invalid customer data. Name and email are required.')
     }
   }
 
   #handleError(error, customMessage) {
-    console.error(`${customMessage}: ${error.message}`);
-    throw new Error(error, customMessage);
+    console.error(`${customMessage}: ${error.message}`)
+    throw new Error(error, customMessage)
   }
 }
